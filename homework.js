@@ -220,18 +220,18 @@
 //extension
 
 const suspectsWithAlibis = ['Miss Scarlet', 'Professor Plum', 'Reverend Green']
-const suspectsWithMotive = ['Colenel Mustard', 'Mrs. White', 'Professor Plum']
+const suspectsWithMotive = ['Colonel Mustard', 'Mrs. White', 'Professor Plum']
 
 const scenario = {
-    murderer: 'Colonel Mustard',
+    murderer: 'Reverend Green',
     room: 'Conservatory',
     weapon: 'Rope'
 }
 
 const redHerring = function(suspect) {
-    let inTheClear = suspectsWithAlibis.find(suspect)
+    let inTheClear = suspectsWithAlibis.includes(suspect)
     if (!inTheClear) {
-        let prettyFishy = suspectsWithMotive.find(suspect)
+        let prettyFishy = suspectsWithMotive.includes(suspect)
         if (prettyFishy) {
             scenario.murderer = suspect
         }
@@ -239,5 +239,16 @@ const redHerring = function(suspect) {
 
 }
 
+const plotTwist = function() {
+    scenario.murderer = 'Miss Scarlet'
+}
 
+const denouement = function() {
+    plotTwist()
+    redHerring('Colonel Mustard')
+    redHerring('Professor Plum')
+    return scenario.murderer
+}
+
+console.log(denouement())
 

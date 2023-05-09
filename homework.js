@@ -200,18 +200,44 @@
 
 //episode 9
 
-let murderer = 'Professor Plum';
+// let murderer = 'Professor Plum';
 
-if (murderer === 'Professor Plum') {
-    let murderer = 'Mrs. Peacock';
-}
+// if (murderer === 'Professor Plum') {
+//     let murderer = 'Mrs. Peacock';
+// }
 
-const declareMurderer = function() {
-    return `The murderer is ${murderer}.`;
-}
+// const declareMurderer = function() {
+//     return `The murderer is ${murderer}.`;
+// }
 
-const verdict = declareMurderer();
-console.log(verdict);
+// const verdict = declareMurderer();
+// console.log(verdict);
 
 //PREDICTED OUTPUT: I'm going to say... `The murderer is Professor Plum`
 //WHY: the if statement will execute, but the let declaration means that the reassignment won't be passed upwards in scope.
+
+
+//extension
+
+const suspectsWithAlibis = ['Miss Scarlet', 'Professor Plum', 'Reverend Green']
+const suspectsWithMotive = ['Colenel Mustard', 'Mrs. White', 'Professor Plum']
+
+const scenario = {
+    murderer: 'Colonel Mustard',
+    room: 'Conservatory',
+    weapon: 'Rope'
+}
+
+const redHerring = function(suspect) {
+    let inTheClear = suspectsWithAlibis.find(suspect)
+    if (!inTheClear) {
+        let prettyFishy = suspectsWithMotive.find(suspect)
+        if (prettyFishy) {
+            scenario.murderer = suspect
+        }
+    }
+
+}
+
+
+
